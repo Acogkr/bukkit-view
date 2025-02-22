@@ -269,7 +269,7 @@ public class BukkitView {
             Player p = (Player) e.getPlayer();
             ViewAction action = ViewAction.NOTHING;
             try {
-                action = view.getOnClose().apply(new CloseEvent(p, view));
+                action = view.getOnClose().apply(new CloseEvent(p, view, e.getReason()));
             } catch (Exception ex) {
                 plugin.getLogger().log(Level.WARNING, ex, () -> "Error on inventory close!");
             }
