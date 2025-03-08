@@ -112,6 +112,9 @@ public class BukkitView {
                 ViewAction action;
                 try {
                     action = view.getOnBottomClick().apply(new BottomClickEvent(view, p, e.getClick(), e.getCurrentItem(), e.getAction()));
+                    if (action instanceof ViewAction.Cancel) {
+                        e.setCancelled(((ViewAction.Cancel) action).isCancelled());
+                    }
                 } catch (Exception ex) {
                     plugin.getLogger().log(Level.WARNING, ex, () -> "Error on bottom inventory click!");
                     // To block after actions

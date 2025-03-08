@@ -23,6 +23,13 @@ public interface ViewAction {
      */
     Reopen REOPEN = new Reopen();
 
+    Cancel CANCEL = new Cancel(true);
+
+    @Data
+    class Cancel implements ViewAction {
+        private final boolean cancelled;
+    }
+
     /**
      * Action nothing.
      * Return this as an empty or default action.
@@ -31,7 +38,6 @@ public interface ViewAction {
         private Nothing() {
         }
     }
-
 
     /**
      * Open the given view as a new inventory.
